@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1413518055 source:c:\users\dave_000\copy\se\cs 137\hashtable\hashtable.c
+	"hashtable.h"
+
+1413518012 c:\users\dave_000\copy\se\cs 137\hashtable\hashtable.h
+
+1413518017 source:c:\users\dave_000\copy\se\cs 137\hashtable\main.c
+	"hashtable.h"
+
+1413517369 c:\users\dave_000\copy\se\cs 137\hashtable\hashtable.c
+	"hashtable.h"
+
