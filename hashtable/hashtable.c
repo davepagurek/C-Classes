@@ -1,54 +1,50 @@
 #include "hashtable.h"
 
-struct hash_item* hash_create() {
-    struct hash_item *head = malloc(sizeof *head);
+Hash* hash_create() {
+    Hash *hash = malloc(sizeof *hash);
 
-    head->key = "";
-    head->value = 0;
-    head->next = 0;
+    hash->head = 0;
+    hash->size = 0;
 
-    return head;
+    return hash;
 };
 
-void hash_delete(Hash* head) {
-    Hash* h = head->next;
+void hash_delete(Hash* hash) {
+    struct hash_item* h = hash->head;
     while (h) {
-        Hash* n = h->next;
+        struct hash_item* n = h->next;
         free(h);
         h = n;
     }
-    head->key = "";
-    head->value = 0;
-    head->next = 0;
+    hash->head = 0;
+    hash->size = 0;
 }
 
-void hash_remove(Hash* head, char key[]) {
-    Hash* h = head;
+void hash_remove(Hash* hash, char key[]) {
+    if (hash->size<=0) return;
+    struct hash_item* h = hash->head;
     if (h) {
         if (strcmp(h->key, key)==0) {
-            if (h->next) {
-                Hash* target = h;
-                h = h->next;
-                free(target);
-            } else {
-                h->key = "";
-                h->value = 0;
-            }
+            struct hash_item* target = h;
+            h = h->next;
+            free(target);
+            hash->size--;
         } else if (h->next) {
             while (h->next && strcmp(h->next->key, key) != 0) {
                 h = h->next;
             }
             if (h->next && strcmp(h->next->key, key)==0) {
-                Hash* target = h->next;
+                struct hash_item* target = h->next;
                 h->next = target->next;
                 free(target);
+                hash->size--;
             }
         }
     }
 }
 
-void hash_set(Hash* head, char key[], int value) {
-    Hash* h = head;
+void hash_set(Hash* hash, char key[], int value) {
+    struct hash_item* h = hash->head;
     if (h) {
         if (strcmp(h->key, key)==0) {
             h->value = value;
@@ -59,22 +55,30 @@ void hash_set(Hash* head, char key[], int value) {
             if (h->next && strcmp(h->next->key, key)==0) {
                 h->next->value = value;
             } else {
-                h->next = malloc(sizeof(*(head->next)));
+                h->next = malloc(sizeof(*(h->next)));
                 h->next->next = 0;
                 h->next->key = key;
                 h->next->value = value;
+                hash->size++;
             }
         } else {
-            h->next = malloc(sizeof(*(head->next)));
+            h->next = malloc(sizeof(*(h->next)));
             h->next->next = 0;
             h->next->key = key;
             h->next->value = value;
+            hash->size++;
         }
+    } else {
+        hash->head = malloc(sizeof(*(hash->head)));
+        hash->head->next = 0;
+        hash->head->key = key;
+        hash->head->value = value;
+        hash->size++;
     }
 }
 
-int hash_value(Hash* head, char key[]) {
-    Hash* h = head;
+int hash_value(Hash* hash, char key[]) {
+    struct hash_item* h = hash->head;
     while (h && strcmp(h->key, key)!=0) {
         h = h->next;
     }

@@ -7,16 +7,21 @@ struct hash_item {
     int value;
 };
 
-typedef struct hash_item Hash;
+struct hash {
+    struct hash_item* head;
+    int size;
+};
+
+typedef struct hash Hash;
 
 Hash* hash_create();
 
-void hash_delete(Hash* head);
+void hash_delete(Hash* h);
 
-void hash_remove(Hash* head, char key[]);
+void hash_remove(Hash* h, char key[]);
 
-void hash_set(Hash* head, char key[], int value);
+void hash_set(Hash* h, char key[], int value);
 
-int hash_value(Hash* head, char key[]);
+int hash_value(Hash* h, char key[]);
 
 #endif
