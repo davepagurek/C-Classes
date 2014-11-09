@@ -1,7 +1,13 @@
 <h1>C-Classes</h1>
+Reference code for common C tasks.
 
-Some common data structures in C, including:
+<h2>Data structures</h2>
 <ol>
-  <li>Vector (linked list)</li>
-  <li>Hash table (a fancier linked list)</li>
+  <li>Linked List (vector)</li>
+  <li>Hash table</li>
+</ol>
+
+<h2>Algorithms</h2>
+<ol>
+  <li>Mergesort</li>
 </ol>
