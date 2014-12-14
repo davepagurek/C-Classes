@@ -11,5 +11,6 @@ Reference code for common C tasks.
 <h2>Algorithms</h2>
 <ol>
   <li>Mergesort</li>
+  <li>Quicksort</li>
   <li>Bisection</li>
 </ol>
