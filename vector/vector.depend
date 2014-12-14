@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1418591637 source:c:\users\dave_000\documents\github\c-classes\vector\main.c
+	<stdio.h>
+	"vector.h"
+
+1418590657 c:\users\dave_000\documents\github\c-classes\vector\vector.h
+
+1418591890 source:c:\users\dave_000\documents\github\c-classes\vector\vector.c
+	<stdlib.h>
+	"vector.h"
+
