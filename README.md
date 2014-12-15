@@ -13,4 +13,5 @@ Reference code for common C tasks.
   <li>Mergesort</li>
   <li>Quicksort</li>
   <li>Bisection</li>
+  <li>Matrix RREF</li>
 </ol>
